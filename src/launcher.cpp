@@ -7,9 +7,11 @@ using namespace std;
 
 void printMenu(){
 
-	cout << "--------- " << " Find the book" << " ---------" << endl << endl;
+	cout << endl << "--------- " << " Find the book" << " ---------" << endl << endl;
 	cout << "	1. Play" << endl;
+	cout << "	2. Top scores" << endl;
 	cout << endl << "  Option (0 to exit) -> ";
+
 }
 
 
@@ -29,7 +31,6 @@ int main()
 
 
 	cout << endl << endl << "  Quitting program!" << endl;
-
 
 	return 0;
 }
