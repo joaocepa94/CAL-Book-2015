@@ -5,21 +5,23 @@
 #include <vector>
 #include <iostream>
 #include <stdlib.h>
+#include <fstream>
+#include <sstream>
 #include <time.h>
 
 #include "Book.h"
-#include "Library.h"
 
 
 using namespace std;
 
 class Game {
-	Library library;
+	fstream booksFile;
 	vector<Book> books;
 private:
 	Game();
 	bool checkIfAnswerIsValid(string tittle, string answer);
 	string generateClue();
+	float numApproximateStringMatching(string input, string tittle);
 };
 
 
