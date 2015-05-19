@@ -1,24 +1,24 @@
-#ifndef FINDBOOK_H_
-#define FINDBOOK_H_
+#ifndef LIBRARY_H_
+#define LIBRARY_H_
 
 #include <string>
 #include <fstream>
 #include <vector>
 #include <sstream>
 #include <iostream>
+#include <stdlib.h>
 
 #include "Book.h"
 
-
 using namespace std;
 
-class FindBook {
+class Library {
 	fstream booksFile;
 	vector<Book> books;
 public:
-	FindBook();
+	Library();
 	vector<Book> getBooks();
+
 };
 
-
-#endif /* FINDBOOK_H_ */
+#endif /* LIBRARY_H_ */

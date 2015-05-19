@@ -1,26 +1,22 @@
-#include "FindBook.h"
+#include "Library.h"
 
 using namespace std;
 
-FindBook::FindBook() {
-
+Library::Library() {
 	booksFile.open("books.txt");
 
 	string line;
 
 	if (booksFile.is_open()) {
 
-		while (!booksFile.eof())
-		{
-
+		while (!booksFile.eof()) {
 			string line;
 			getline(booksFile, line);
 
 			istringstream ss(line);
 			vector<string> toRead;
 
-			while (ss)
-			{
+			while (ss) {
 
 				string s;
 
@@ -49,8 +45,6 @@ FindBook::FindBook() {
 }
 
 
-vector<Book> FindBook::getBooks(){
+vector<Book> Library::getBooks(){
 	return books;
 }
-
-
