@@ -15,6 +15,9 @@ public:
 	string getTitle();
 	string getAuthor();
 	int getYear();
+	void setTitle(string title1);
+	void setAuthor(string author1);
+	void setYear(int year1);
 
 };
 
