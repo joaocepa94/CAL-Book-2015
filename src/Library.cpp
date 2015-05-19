@@ -31,7 +31,15 @@ Library::Library() {
 			string author = toRead[1];
 			int year = atoi(toRead[2].c_str());
 
+			/*vector<string> clues;
+
+			for(int i = 3, j = 0; i < toRead.size(); i++,j++)
+			{
+				clues.at(j) = toRead.at(i);
+			}*/
+
 			Book b = Book(title, author, year);
+			//b.setClues(clues);
 
 			books.push_back(b);
 
