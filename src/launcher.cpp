@@ -1,19 +1,33 @@
-/*
- * launcher.cpp
- *
- *  Created on: 19/05/2015
- *      Author: João Cepa
- */
-
 #include <iostream>
 
 using namespace std;
 
-int main() {
-	int i;
+void printMenu(){
+
+	cout << "--------- " << " Find the book" << " ---------" << endl << endl;
+	cout << "	1. Play" << endl;
+	cout << endl << "  Option (0 to exit) -> ";
+}
+
+
+
+int main()
+{
+	string input;
+
+	do
+	{
+
+		printMenu();
+
+		cin >> input;
+
+	} while(input != "0");
+
+
+	cout << endl << endl << "  Quitting program!" << endl;
 
 	return 0;
 }
-
 
 
