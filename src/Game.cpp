@@ -3,8 +3,10 @@
 using namespace std;
 
 
-Game::Game()
+Game::Game(string name)
 {
+	this->p = Player(name);
+
 	booksFile.open("books.txt");
 
 		string line;

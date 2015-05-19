@@ -10,15 +10,17 @@
 #include <time.h>
 
 #include "Book.h"
+#include "Player.h"
 
 
 using namespace std;
 
 class Game {
+	Player p;
 	fstream booksFile;
 	vector<Book> books;
-private:
-	Game();
+public:
+	Game(string name);
 	bool checkIfAnswerIsValid(string tittle, string answer);
 	string generateClue();
 	float numApproximateStringMatching(string input, string tittle);
