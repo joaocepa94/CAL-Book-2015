@@ -16,12 +16,14 @@
 using namespace std;
 
 class Game {
-	Player p;
 	fstream booksFile;
+	fstream playersFile;
+	vector<Player> players;
 	vector<Book> books;
 public:
-	Game(string name);
+	Game();
 	bool checkIfAnswerIsValid(string tittle, string answer);
+	bool checkIfPlayerExist(string name);
 	string generateClue();
 	float numApproximateStringMatching(string input, string tittle);
 };

@@ -1,23 +1,28 @@
-
 #include "Player.h"
 
-Player::Player(string name) {
+
+Player::Player(string name, int score)
+{
 	this->name = name;
-	this->score = 0;
+	this->score = score;
 }
 
-string Player::getName(){
+string Player::getName()
+{
 	return name;
 }
 
-int Player::getScore(){
+int Player::getScore()
+{
 	return score;
 }
 
-void Player::incrementScore(){
+void Player::incrementScore()
+{
 	score = score + 5;
 }
 
-void Player::decrementScore(){
+void Player::decrementScore()
+{
 	score = score - 1;
 }
