@@ -26,3 +26,11 @@ void Player::decrementScore()
 {
 	score = score - 1;
 }
+
+
+bool Player::operator<(const Player & p) const
+{
+	if(score < p.score)
+		return true;
+	return false;
+}
