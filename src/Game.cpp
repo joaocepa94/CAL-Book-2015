@@ -92,11 +92,16 @@ bool Game::checkIfPlayerExist(string name) {
 }
 
 string Game::generateClue() {
-	int positionBook = rand() % books.size() - 1;
+
+	srand(time(NULL));
+
+	int positionBook = rand() % (books.size() - 1);
 
 	Book bookToSearch = books.at(positionBook);
 
-	int positionClue = rand() % bookToSearch.getClues().size() - 1;
+	srand(time(NULL));
+
+	int positionClue = rand() % (bookToSearch.getClues().size() - 1);
 
 	return (bookToSearch.getClues()[positionClue]);
 
@@ -110,8 +115,7 @@ float Game::numApproximateStringMatching(string input, string tittle) {
 
 bool Game::createPlayer(string name) {
 
-	if (!checkIfPlayerExist(name))
-	{
+	if (!checkIfPlayerExist(name)) {
 		Player p = Player(name, 0);
 		players.push_back(p);
 		return true;
@@ -121,10 +125,8 @@ bool Game::createPlayer(string name) {
 
 }
 
-
-void Game::sortPlayers()
-{
-	sort(players.begin(),players.end());
+void Game::sortPlayers() {
+	sort(players.begin(), players.end());
 }
 
 void Game::saveGame() {

@@ -30,7 +30,7 @@ void Player::decrementScore()
 
 bool Player::operator<(const Player & p) const
 {
-	if(score < p.score)
+	if(score < p.score && name != p.name)
 		return true;
 	return false;
 }
