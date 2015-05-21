@@ -112,3 +112,34 @@ void Game::createPlayer(string name){
 	players.push_back(p);
 
 }
+
+void Game::saveGame(){
+
+	//Put in players.txt the new information
+
+	if (playersFile.is_open()){
+
+		for(int i=0; i<players.size();i++){
+			playersFile << players[i].getName() << endl;
+			playersFile << players[i].getScore() << endl;
+		}
+	}
+	else{
+		cout << "Error saving scores..." << endl;
+	}
+}
+
+void Game::sortPlayers(){
+
+	for(int i=0; i<players.size();i++){
+
+		Player temp = players[i];
+		int j;
+
+		for(j = i; j > 0 && temp < players[j-1]; j--){
+			players[j] = players[j-1];
+		}
+
+		players[j] = temp;
+	}
+}

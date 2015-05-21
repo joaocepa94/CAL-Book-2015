@@ -8,6 +8,7 @@
 #include <fstream>
 #include <sstream>
 #include <time.h>
+#include <algorithm>
 
 #include "Book.h"
 #include "Player.h"
@@ -27,6 +28,8 @@ public:
 	string generateClue();
 	float numApproximateStringMatching(string input, string tittle);
 	void createPlayer(string name);
+	void sortPlayers();
+	void saveGame();
 };
 
 

@@ -16,6 +16,7 @@ public:
 	void incrementScore();
 	void decrementScore();
 	bool operator<(const Player & p) const;
+	bool operator=(const Player & p) const;
 };
 
 #endif
