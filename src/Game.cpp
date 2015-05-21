@@ -105,3 +105,10 @@ float Game::numApproximateStringMatching(string input, string tittle) {
 
 	return result;
 }
+
+void Game::createPlayer(string name){
+
+	Player p = Player(name,0);
+	players.push_back(p);
+
+}

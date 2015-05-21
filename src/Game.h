@@ -26,6 +26,7 @@ public:
 	bool checkIfPlayerExist(string name);
 	string generateClue();
 	float numApproximateStringMatching(string input, string tittle);
+	void createPlayer(string name);
 };
 
 
