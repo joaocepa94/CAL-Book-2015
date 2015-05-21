@@ -53,7 +53,7 @@ Game::Game() {
 
 	if (playersFile.is_open()) {
 
-		while (playersFile.eof()) {
+		while (!playersFile.eof()) {
 			string name;
 			getline(playersFile, name);
 
@@ -71,6 +71,8 @@ Game::Game() {
 		cout << "Error loading players.txt!" << endl;
 	}
 
+	playersFile.close();
+	booksFile.close();
 }
 
 bool Game::checkIfAnswerIsValid(string tittle, string answer) {
@@ -106,40 +108,38 @@ float Game::numApproximateStringMatching(string input, string tittle) {
 	return result;
 }
 
-void Game::createPlayer(string name){
+bool Game::createPlayer(string name) {
 
-	Player p = Player(name,0);
-	players.push_back(p);
+	if (!checkIfPlayerExist(name))
+	{
+		Player p = Player(name, 0);
+		players.push_back(p);
+		return true;
+	}
+
+	return false;
 
 }
 
-void Game::saveGame(){
 
-	//Put in players.txt the new information
+void Game::sortPlayers()
+{
+	sort(players.begin(),players.end());
+}
 
-	if (playersFile.is_open()){
+void Game::saveGame() {
 
-		for(int i=0; i<players.size();i++){
+	//	Put in players.txt the new information
+
+	playersFile.open("players.txt", std::ofstream::out | std::ofstream::trunc);
+
+	if (playersFile.is_open()) {
+		for (int i = 0; i < players.size(); i++) {
 			playersFile << players[i].getName() << endl;
 			playersFile << players[i].getScore() << endl;
 		}
-	}
-	else{
-		cout << "Error saving scores..." << endl;
-	}
+	} else
+		cout << endl << "Error while saving scores!" << endl;
+
 }
 
-void Game::sortPlayers(){
-
-	for(int i=0; i<players.size();i++){
-
-		Player temp = players[i];
-		int j;
-
-		for(j = i; j > 0 && temp < players[j-1]; j--){
-			players[j] = players[j-1];
-		}
-
-		players[j] = temp;
-	}
-}

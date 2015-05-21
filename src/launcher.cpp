@@ -11,6 +11,8 @@ int main()
 {
 
 	Game *a = new Game();
+	a->createPlayer("lol");
+	a->createPlayer("sim");
 	a->sortPlayers();
 	a->saveGame();
 	return 0;

@@ -22,12 +22,13 @@ class Game {
 	vector<Player> players;
 	vector<Book> books;
 public:
+	~Game(){};
 	Game();
 	bool checkIfAnswerIsValid(string tittle, string answer);
 	bool checkIfPlayerExist(string name);
 	string generateClue();
 	float numApproximateStringMatching(string input, string tittle);
-	void createPlayer(string name);
+	bool createPlayer(string name);
 	void sortPlayers();
 	void saveGame();
 };

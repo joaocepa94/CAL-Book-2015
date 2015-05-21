@@ -34,11 +34,3 @@ bool Player::operator<(const Player & p) const
 		return true;
 	return false;
 }
-
-bool Player::operator=(const Player & p) const{
-
-	if(score == p.score)
-		return true;
-	return false;
-
-}
