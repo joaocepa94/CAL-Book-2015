@@ -4,8 +4,14 @@ using namespace std;
 
 Game::Game() {
 
+	loadInfoBooks();
+	loadInfoPlayers();
+
+}
+
+void Game::loadInfoBooks() {
+
 	booksFile.open("books.txt");
-	playersFile.open("players.txt");
 
 	string line;
 
@@ -47,32 +53,50 @@ Game::Game() {
 
 		}
 
-	} else {
+	} else
 		cout << "Error loading books.txt!" << endl;
-	}
+
+	booksFile.close();
+
+}
+
+void Game::loadInfoPlayers() {
+
+	playersFile.open("players.txt");
 
 	if (playersFile.is_open()) {
 
 		while (!playersFile.eof()) {
-			string name;
-			getline(playersFile, name);
+			string line;
+			getline(playersFile, line);
 
-			string scoreS;
-			getline(playersFile, scoreS);
+			if (line == "")
+				break;
 
-			int score = atoi(scoreS.c_str());
+			istringstream ss(line);
+			vector<string> toRead;
 
-			Player player = Player(name, score);
+			while (ss) {
+
+				string s;
+
+				if (!getline(ss, s, ','))
+					break;
+
+				toRead.push_back(s);
+
+			}
+
+			Player player = Player(toRead[0], atoi(toRead[1].c_str()));
 
 			players.push_back(player);
 		}
 
-	} else {
+	} else
 		cout << "Error loading players.txt!" << endl;
-	}
 
 	playersFile.close();
-	booksFile.close();
+
 }
 
 bool Game::checkIfAnswerIsValid(string tittle, string answer) {
@@ -108,20 +132,37 @@ string Game::generateClue() {
 }
 
 float Game::numApproximateStringMatching(string input, string tittle) {
-	float result = 0;
 
-	return result;
-}
+	int n = tittle.length();
+	vector<int> d(n + 1);
+	int old, neww;
+	for (int j = 0; j <= n; j++)
+		d[j] = j;
+	int m = input.length();
 
-bool Game::createPlayer(string name) {
-
-	if (!checkIfPlayerExist(name)) {
-		Player p = Player(name, 0);
-		players.push_back(p);
-		return true;
+	for (int i = 1; i <= m; i++) {
+		old = d[0];
+		d[0] = i;
+		for (int j = 1; j <= n; j++) {
+			if (tittle[i - 1] == tittle[j - 1])
+				neww = old;
+			else {
+				neww = min(old, d[j]);
+				neww = min(neww, d[j - 1]);
+				neww = neww + 1;
+			}
+			old = d[j];
+			d[j] = neww;
+		}
 	}
 
-	return false;
+	return d[n];
+}
+
+void Game::createPlayer(string name) {
+
+	Player p = Player(name, 0);
+	players.push_back(p);
 
 }
 
@@ -133,14 +174,15 @@ void Game::saveGame() {
 
 	//	Put in players.txt the new information
 
+	cout << "Size: " << players.size() << endl;
+
 	playersFile.open("players.txt", std::ofstream::out | std::ofstream::trunc);
 
-	if (playersFile.is_open()) {
-		for (int i = 0; i < players.size(); i++) {
-			playersFile << players[i].getName() << endl;
-			playersFile << players[i].getScore() << endl;
-		}
-	} else
+	if (playersFile.is_open())
+		for (int i = 0; i < players.size(); i++)
+			playersFile << players[i].getName() << "," << players[i].getScore()
+					<< "," << endl;
+	else
 		cout << endl << "Error while saving scores!" << endl;
 
 }

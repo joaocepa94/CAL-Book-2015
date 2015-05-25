@@ -26,16 +26,20 @@ int main() {
 	string name;
 	cin >> name;
 
-	if(a->createPlayer(name)){
-		cout << "Player created!" << endl;
-	}
-
+	if(!a->checkIfPlayerExist(name))
+		a->createPlayer(name);
 
 	string clue = a->generateClue();
 
 	cout << clue << endl;
 
-	a->sortPlayers();
+	cout << endl << "Give an answer: " << endl;
+
+	string answer;
+
+	cin >> answer;
+
+	cout << a->numApproximateStringMatching(answer,"felizmente ha luar");
 
 	a->saveGame();
 

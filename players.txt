@@ -1,8 +1,5 @@
-li
-10
-jk
-11
-filipe
-12
-joao
-13
+joana,12,
+pedro,15,
+puta,0,
+fdscaralho,0,
+caralh0,0,
