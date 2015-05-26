@@ -131,7 +131,7 @@ string Game::generateClue() {
 
 }
 
-float Game::numApproximateStringMatching(string input, string tittle) {
+double Game::numApproximateStringMatching(string input, string tittle) {
 
 	int n = tittle.length();
 	vector<int> d(n + 1);
@@ -144,7 +144,7 @@ float Game::numApproximateStringMatching(string input, string tittle) {
 		old = d[0];
 		d[0] = i;
 		for (int j = 1; j <= n; j++) {
-			if (tittle[i - 1] == tittle[j - 1])
+			if (input[i - 1] == tittle[j - 1])
 				neww = old;
 			else {
 				neww = min(old, d[j]);
@@ -156,7 +156,8 @@ float Game::numApproximateStringMatching(string input, string tittle) {
 		}
 	}
 
-	return d[n];
+
+	return (1.000 - (double) d[n] / tittle.size()) * 100.000;
 }
 
 void Game::createPlayer(string name) {
@@ -173,8 +174,6 @@ void Game::sortPlayers() {
 void Game::saveGame() {
 
 	//	Put in players.txt the new information
-
-	cout << "Size: " << players.size() << endl;
 
 	playersFile.open("players.txt", std::ofstream::out | std::ofstream::trunc);
 
