@@ -34,3 +34,7 @@ bool Player::operator<(const Player & p) const
 		return true;
 	return false;
 }
+
+void Player::setScore(int newScore){
+	this->score = newScore;
+}

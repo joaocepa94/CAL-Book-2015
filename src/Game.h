@@ -28,13 +28,18 @@ public:
 	void loadInfoBooks();
 	void loadInfoPlayers();
 
+	vector<Player> getPlayers();
+	vector<Book> getBooks();
+
 	void saveGame();
 
 	bool checkIfAnswerIsValid(string tittle, string answer);
 	bool checkIfPlayerExist(string name);
 
-	string generateClue();
+	string generateClue(int positionBook);
 	double numApproximateStringMatching(string input, string tittle);
+
+	bool setScorePlayer(string name, int score);
 
 	void createPlayer(string name);
 	void sortPlayers();

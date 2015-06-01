@@ -115,11 +115,7 @@ bool Game::checkIfPlayerExist(string name) {
 	return false;
 }
 
-string Game::generateClue() {
-
-	srand(time(NULL));
-
-	int positionBook = rand() % (books.size() - 1);
+string Game::generateClue(int positionBook) {
 
 	Book bookToSearch = books.at(positionBook);
 
@@ -156,7 +152,6 @@ double Game::numApproximateStringMatching(string input, string tittle) {
 		}
 	}
 
-
 	return (1.000 - (double) d[n] / tittle.size()) * 100.000;
 }
 
@@ -184,5 +179,25 @@ void Game::saveGame() {
 	else
 		cout << endl << "Error while saving scores!" << endl;
 
+}
+
+bool Game::setScorePlayer(string name, int score) {
+	for (int i = 0; i < players.size(); i++) {
+		if (players.at(i).getName() == name) {
+			if (players.at(i).getScore() < score) {
+				players.at(i).setScore(score);
+				return true;
+			}
+		}
+	}
+	return false;
+}
+
+vector<Player> Game::getPlayers() {
+	return players;
+}
+
+vector<Book> Game::getBooks() {
+	return books;
 }
 

@@ -13,6 +13,7 @@ public:
 	Player(string name, int score);
 	string getName();
 	int getScore();
+	void setScore(int newScore);
 	void incrementScore();
 	void decrementScore();
 	bool operator<(const Player & p) const;
