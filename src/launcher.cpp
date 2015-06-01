@@ -8,9 +8,6 @@
 
 using namespace std;
 
-/*
- * Functions to print on console
- */
 
 void clearConsole() {
 	for (int i = 0; i < 50; i++) {
@@ -32,9 +29,6 @@ void printMenu() {
 	cout << endl << "  Option (Press 0 to exit) -> ";
 }
 
-/*
- *
- */
 
 void actionMenu(string input, Game *game) {
 
@@ -89,7 +83,7 @@ void actionMenu(string input, Game *game) {
 
 			srand(time(NULL));
 
-			int positionBook = rand() % (game->getBooks().size() - 1);
+			int positionBook = rand() % (game->getBooks().size());
 
 			clearConsole();
 
@@ -230,6 +224,7 @@ int main() {
 	} while (input != "0");
 
 	game->saveGame();
+
 
 	return 0;
 }
